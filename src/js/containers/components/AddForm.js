@@ -70,19 +70,7 @@ const AddForm = () => {
 		if (newSchedule !== false) {
 			setUserData({ ...userData, schedule: newSchedule });
 			setAddFormState({ ...addFormState, active: false });
-			setErrorState({
-				...errorState,
-				active: true,
-				mode: 'add',
-				message: [ [ '일정이 추가 되었습니다.' ] ]
-			});
-		} else {
-			setErrorState({
-				...errorState,
-				active: true,
-				mode: 'fail',
-				message: [ [ '일정을 추가할 수 없습니다.' ], [ '해당 시간에 이미 다른 일정이 존재합니다.' ] ]
-			});
+
 		}
 	};
 
@@ -94,19 +82,6 @@ const AddForm = () => {
 		if (newSchedule !== false) {
 			setUserData({ ...userData, schedule: newSchedule });
 			setAddFormState({ ...addFormState, active: false });
-			setErrorState({
-				...errorState,
-				active: true,
-				mode: 'edit',
-				message: [ [ '일정이 수정 되었습니다.' ] ]
-			});
-		} else {
-			setErrorState({
-				...errorState,
-				active: true,
-				mode: 'fail',
-				message: [ [ '일정을 수정할 수 없습니다.' ], [ '해당 시간에 이미 다른 일정이 존재합니다.' ] ]
-			});
 		}
 	};
 
