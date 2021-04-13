@@ -14,7 +14,7 @@ function KoreaAllData(res) {
   },[user])
 
   const FontStyle = {
-  fontSize: "0.1rem",
+  fontSize: "0.01rem",
 }
   return (
       <>

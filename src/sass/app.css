@@ -136,7 +136,7 @@ nav {
         padding: 0px;
         cursor: pointer;
         padding: 5px;
-        overflow: hidden;}
+        overflow: scroll;}
         #calendar-view #monthly-view .monthly-row .monthly-cell p {
           width: 100%;
           background: #fff;
