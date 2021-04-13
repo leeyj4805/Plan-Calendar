@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import 'sass/app.css';
+import KoreaAllData from 'api/KoreaAllData'
 import { editDate } from 'js/containers/components/UserDataController';
 import { useAddFormState } from 'js/stores/addFormState';
 import { useErrorState } from 'js/stores/errorState';
 import { useUserData } from 'js/stores/userData';
 import { useDragAndDrop } from 'js/stores/dragAndDrop';
 
+
+
 const MonthlyCell = (props) => {
+
 	const { date, schedule } = props;
 	const [ addFormState, setAddFormState ] = useAddFormState();
 	const { active } = addFormState;
@@ -14,6 +18,8 @@ const MonthlyCell = (props) => {
 	const [ userData, setUserData ] = useUserData();
 	const [ dragAndDrop, setDragAndDrop ] = useDragAndDrop();
 	const [ curDateStr, setCurDateStr ] = useState('');
+
+
 
 	useEffect(
 		() => {
@@ -25,6 +31,8 @@ const MonthlyCell = (props) => {
 		},
 		[ schedule ]
 	);
+
+
 
 	const onClickDate = () => {
 		if (!active) {
@@ -55,7 +63,6 @@ const MonthlyCell = (props) => {
 
 	const onDropSchedule = (e) => {
 		const newSchedule = editDate(dragAndDrop.to, dragAndDrop.from, userData.schedule);
-
 		if (newSchedule !== false) {
 			setUserData({ ...userData, schedule: newSchedule });
 			setAddFormState({ ...addFormState, active: false });
@@ -63,14 +70,12 @@ const MonthlyCell = (props) => {
 				...errorState,
 				active: true,
 				mode: 'edit',
-				message: [ [ '일정이 수정 되었습니다.' ] ]
 			});
 		} else {
 			setErrorState({
 				...errorState,
 				active: true,
 				mode: 'fail',
-				message: [ [ '일정을 수정할 수 없습니다.' ], [ '해당 시간에 이미 다른 일정이 존재합니다.' ] ]
 			});
 		}
 	};
@@ -85,10 +90,14 @@ const MonthlyCell = (props) => {
 		setDragAndDrop({ ...dragAndDrop, to: newScheduleForm });
 	};
 
+
+
 	return (
+		<>
+		
 		<div className="monthly-cell" onClick={onClickDate} onDragEnter={onDragEnterCell} onDragEnd={onDropSchedule}>
 			<p>{curDateStr}</p>
-
+			<KoreaAllData />
 			{schedule.map((a, i) => (
 				<div
 					key={i}
@@ -101,6 +110,8 @@ const MonthlyCell = (props) => {
 				</div>
 			))}
 		</div>
+
+		</>
 	);
 };
 

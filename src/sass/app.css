@@ -152,6 +152,10 @@ nav {
           z-index: 2;
           margin-bottom: 10px;
           cursor: pointer; }
+          #calendar-view #monthly-view .monthly-row .monthly-cell .monthly-schedule .date-others {
+            color: rgba(200, 200, 200, 0.4);
+
+          }
           #calendar-view #monthly-view .monthly-row .monthly-cell .monthly-schedule:hover {
             opacity: 0.5; }
           #calendar-view #monthly-view .monthly-row .monthly-cell .monthly-schedule p {
@@ -159,6 +163,7 @@ nav {
             margin: 0; }
         #calendar-view #monthly-view .monthly-row .monthly-cell:nth-child(1) {
           border-left: solid 1px #ddd; }
+
   #calendar-view #weekly-view {
     width: 900px;
     display: flex;
@@ -384,3 +389,32 @@ nav {
   #error-panel .delete {
     background: #111;
     color: #eee; }
+
+    .calendar-cell {
+      border: 1px solid black;
+      padding: 0.5rem;
+    }
+    .past-month,
+    .next-month {
+      color: gray;
+    }
+
+    .sun {
+      color: red;
+    }
+
+    .sat {
+      color: blue;
+    }
+
+    .past-month.sun {
+      color: pink;
+    }
+
+    .next-month.sat {
+      color: lightblue;
+    }
+
+    .today {
+      color: #E5732F;
+    }

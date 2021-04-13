@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'sass/app.css';
 import { useCalendarState } from 'js/stores/calendarState';
+
+
 const ControlView = () => {
 	const [ calendarState, setCalendarState ] = useCalendarState();
 	const { mode, date } = calendarState;
@@ -11,10 +13,7 @@ const ControlView = () => {
 			let newCurDate;
 			if (mode === 'monthly') {
 				newCurDate = date.getFullYear() + '년 ' + (date.getMonth() + 1) + '월';
-			} else if (mode === 'weekly') {
-				let lastDate = parseInt((date.getDate() + (6 - date.getDay())) / 7) + 1;
-				newCurDate = date.getFullYear() + '년 ' + (date.getMonth() + 1) + '월 ' + lastDate + '주';
-			}
+			} 
 			setCurDateStr(newCurDate);
 		},
 		[ date, mode ]
@@ -29,16 +28,15 @@ const ControlView = () => {
 	};
 
 	const onClickDateView = () => {
-		setCalendarState({ ...calendarState, date: new Date() });
+		setCalendarState({ ...calendarState, date: new Date() })
+
 	};
 
 	const changeDate = (value) => {
 		let newDate;
-		if (mode === 'weekly') {
-			newDate = new Date(date.getFullYear(), date.getMonth(), date.getDate() + value * 7);
-		} else if (mode === 'monthly') {
+		if (mode === 'monthly') {
 			newDate = new Date(date.getFullYear(), date.getMonth() + value, date.getDate());
-		}
+		} 
 		setCalendarState({ ...calendarState, date: newDate });
 	};
 
@@ -49,8 +47,9 @@ const ControlView = () => {
 				<nav>
 					<button className="btn prevBtn" onClick={onClickLeft}> &lt; </button>
 					<button className="btn todayBtn" onClick={onClickDateView}> 오늘 </button>
-					<button className="btn nextBtn" onClick={onClickRight}> &gt; </button>
+					<button className="btn nextBtn" onClick={onClickRight}> &gt; </button>	
 				</nav>
+
 			</div>
 		</div>
 	);

@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import 'sass/app.css';
 import MonthlyCell from './MonthlyCell';
+// import Data from 'api/Data';
 import { getSchedule } from 'js/containers/components/UserDataController';
 // store
 import { useCalendarState } from 'js/stores/calendarState';
 import { useUserData } from 'js/stores/userData';
 
+
+
+
+
 const Monthly = () => {
+
 	const [ calendarState ] = useCalendarState();
 	const { date } = calendarState;
 
@@ -15,6 +21,7 @@ const Monthly = () => {
 	const [ userData ] = useUserData();
 	const { schedule } = userData; // 유저의 스케쥴
 	const [ curSchedule, setCurSchedule ] = useState([]); // 현재 달력 날짜 안에 포함된 스케쥴
+	
 
 	useEffect(
 		() => {
@@ -32,6 +39,8 @@ const Monthly = () => {
 		[ userData ]
 	);
 
+
+
 	const getFirstAndLastDate = () => {
 		const year = date.getFullYear();
 		const month = date.getMonth();
@@ -43,6 +52,7 @@ const Monthly = () => {
 	};
 
 	const makeCalendar = (firstDate, lastDate) => {
+		
 		let tempDate = new Date(firstDate);
 		let newDates = [];
 		let index = 0;
@@ -68,23 +78,34 @@ const Monthly = () => {
 		return curDateSchedule;
 	};
 
+
+	
+
+
 	return (
+		<>
+
 		<div id="monthly-view">
-			<div className="day-row">
+
+			<div className="day-row">			
 				{days.map((a, i) => (
 					<div key={i} className="day-cell">
 						{a}
 					</div>
 				))}
 			</div>
-
 			{dates.map((a, i) => (
-				<div key={i} className="monthly-row">
+				<div key={i} className="monthly-row">			
 					{a.map((b, j) => <MonthlyCell key={j} date={b} schedule={getCurDateSchedule(b)} />)}
 				</div>
+				
 			))}
 		</div>
+		</>
 	);
 };
 
+
 export default Monthly;
+
+

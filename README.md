@@ -15,7 +15,7 @@
 ## Tech/framework used
 
 ```jsx
-react, react-hooks, react-datepicker
+react, react-hooks, react-datepicker, moment
 ```
 
 ## Install and build
