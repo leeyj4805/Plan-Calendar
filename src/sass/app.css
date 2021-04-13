@@ -135,7 +135,8 @@ nav {
         border-right: solid 1px #ddd;
         padding: 0px;
         cursor: pointer;
-        padding: 5px; }
+        padding: 5px;
+        overflow: hidden;}
         #calendar-view #monthly-view .monthly-row .monthly-cell p {
           width: 100%;
           background: #fff;
